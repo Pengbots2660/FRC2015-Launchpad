@@ -40,21 +40,29 @@ void setup() {
   // initialize the LED pin as an output:
   pinMode(ledPin, OUTPUT);      
   // initialize the pushbutton pin as an input:
-  pinMode(buttonPinR, INPUT_PULLUP);     
+  pinMode(buttonPinR, INPUT_PULLUP);
+  pinMode(buttonPinL, INPUT_PULLUP);
 }
-
 void loop(){
   // read the state of the pushbutton value:
   buttonStateR = digitalRead(buttonPinR);
+  buttonStateL = digitalRead(buttonPinL);
 
   // check if the pushbutton is pressed.
   // if it is, the buttonState is HIGH:
-  if (buttonStateR == HIGH) {     
+  if (buttonStateR == HIGH){     
     // turn LED on:    
     digitalWrite(ledPin, HIGH);  
-  } 
-  else {
+  }
+  else{
+    digitalWrite(ledPin, LOW);
+  }
+  if (buttonStateL == HIGH){
     // turn LED off:
-    digitalWrite(ledPin, LOW); 
+    digitalWrite(ledPin, LOW);
+  }
+  else{
+    digitalWrite(ledPin, HIGH);
   }
 }
+    
